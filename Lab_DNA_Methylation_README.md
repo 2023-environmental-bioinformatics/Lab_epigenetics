@@ -14,7 +14,7 @@ In this lab, you'll go through several steps of a typical DNA methylation data a
 [IGV](https://igv.org/) is a GUI used to visualize various forms of genomic data. Today, we'll use it to get an understanding of what DNA methylation data "looks" like!
 
 - Download and install IGV on your local machine. You can use the IGV web browser, but I've found it's much slower and glitchier than using it on your local machine.
-- Open IGV, which opens a new session. Upload the [Pacific oyster genome](https://gannet.fish.washington.edu/spartina/project-oyster-oa/Haws/data/cgigas_uk_roslin_v1_genomic-mito.fa) using the "Load Genome from URL" option.
+- Open IGV, which opens a new session. Upload the [Pacific oyster genome]( https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa) using the "Load Genome from URL" option.
 
 <img width="568" alt="Screenshot 2023-11-24 at 11 40 24 AM" src="https://github.com/2023-environmental-bioinformatics/Lab_BLAST/assets/22335838/8adbb26e-1409-4849-8448-ef948eee761a">
 
