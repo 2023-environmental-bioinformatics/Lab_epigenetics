@@ -4,14 +4,14 @@ With climate change rapidly impacting ecosystems, phenotypic plasticity that ope
 
 In this lab, you'll go through several steps of a typical DNA methylation data analysis workflow using data from [Venkataraman et al. (2022)](http://dx.doi.org/10.1186/s12864-022-08781-5):
 
-1. Use the [Integrative Genomics Viewer](igv.org) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
+1. Use the [Integrative Genomics Viewer](https://igv.org) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
 2. Understand parameters used to identify environmentally-sensitive DML
 3. Interpret [`bedtools`](https://bedtools.readthedocs.io/en/latest/index.html) output to characterize genomic location of DML
 4. Complete a gene enrichment analysis with [`topGO`](https://bioconductor.org/packages/release/bioc/vignettes/topGO/inst/doc/topGO.pdf) and visualize results with [REVIGO](http://revigo.irb.hr)
 
 ## Data visualization with IGV
 
-[IGV](igv.org) is a GUI used to visualize various forms of genomic data. Today, we'll use it to get an understanding of what DNA methylation data "looks" like!
+[IGV](https://igv.org) is a GUI used to visualize various forms of genomic data. Today, we'll use it to get an understanding of what DNA methylation data "looks" like!
 
 - Download and install IGV on your local machine. You can use the IGV web browser, but I've found it's much slower and glitchier than using it on your local machine.
 - Open IGV, which opens a new session. Upload the [Pacific oyster genome](https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa) and [index file](https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa.fai) using the "Load Genome from URL" option.
