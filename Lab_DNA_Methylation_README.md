@@ -4,7 +4,7 @@ With climate change rapidly impacting ecosystems, phenotypic plasticity that ope
 
 In this lab, you'll go through several steps of a typical DNA methylation data analysis workflow using data from [Venkataraman et al. (2022)](http://dx.doi.org/10.1186/s12864-022-08781-5):
 
-1. Use the [Integrative Genomics Viewer](https://igv.org](https://igv.org/doc/desktop/#DownloadPage) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
+1. Use the [Integrative Genomics Viewer](https://igv.org/doc/desktop/#DownloadPage) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
 2. Understand parameters used to identify environmentally-sensitive DML
 3. Interpret [`bedtools`](https://bedtools.readthedocs.io/en/latest/index.html) output to characterize genomic location of DML
 4. Complete a gene enrichment analysis with [`topGO`](https://bioconductor.org/packages/release/bioc/vignettes/topGO/inst/doc/topGO.pdf) and visualize results with [REVIGO](http://revigo.irb.hr)
