@@ -20,8 +20,6 @@ In this lab, you'll go through several steps of a typical DNA methylation data a
 
 - Add one methylation data file using the "Load from File" option: [sample file](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_1_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
 
-<img width="973" alt="Screenshot 2023-11-19 at 9 58 46 PM" src="https://github.com/yaaminiv/apalm-hypoxia-omics/assets/22335838/1c662716-7670-4841-b314-477659ec3366">
-
 - Familiarize yourself with the different ways to visualize the data, such as navigating to a different part of the genome, zooming in and out, changing the color of track, etc. Is the genome methylated throughout, or are there concentrated pockets that are more methylated?
 
 The R package [`methylKit`](https://github.com/al2na/methylKit) is commonly used to identify differentially methylated loci (DML). Users need to define a methylation difference. A 50% difference is commonly used to identify DML, but some studies have used other.
