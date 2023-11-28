@@ -4,33 +4,25 @@ With climate change rapidly impacting ecosystems, phenotypic plasticity that ope
 
 In this lab, you'll go through several steps of a typical DNA methylation data analysis workflow using data from [Venkataraman et al. (2022)](http://dx.doi.org/10.1186/s12864-022-08781-5):
 
-1. Use the [Integrative Genomics Viewer](https://igv.org/) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
+1. Use the [Integrative Genomics Viewer](igv.org) to visualized cleaned methylation data aligned to the Pacific oyster genome and various differentially methylated loci (DML) tracks
 2. Understand parameters used to identify environmentally-sensitive DML
 3. Interpret [`bedtools`](https://bedtools.readthedocs.io/en/latest/index.html) output to characterize genomic location of DML
 4. Complete a gene enrichment analysis with [`topGO`](https://bioconductor.org/packages/release/bioc/vignettes/topGO/inst/doc/topGO.pdf) and visualize results with [REVIGO](http://revigo.irb.hr)
 
 ## Data visualization with IGV
 
-[IGV](https://igv.org/) is a GUI used to visualize various forms of genomic data. Today, we'll use it to get an understanding of what DNA methylation data "looks" like!
+[IGV](igv.org) is a GUI used to visualize various forms of genomic data. Today, we'll use it to get an understanding of what DNA methylation data "looks" like!
 
 - Download and install IGV on your local machine. You can use the IGV web browser, but I've found it's much slower and glitchier than using it on your local machine.
-- Open IGV, which opens a new session. Upload the [Pacific oyster genome]( https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa) using the "Load Genome from URL" option.
+- Open IGV, which opens a new session. Upload the [Pacific oyster genome](https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa) and [index file](https://gannet.fish.washington.edu/panopea/Cg-roslin/cgigas_uk_roslin_v1_genomic-mito.fa.fai) using the "Load Genome from URL" option.
 
 <img width="568" alt="Screenshot 2023-11-24 at 11 40 24 AM" src="https://github.com/2023-environmental-bioinformatics/Lab_BLAST/assets/22335838/8adbb26e-1409-4849-8448-ef948eee761a">
 
-- Add the [BEDgraphs of methylation data](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/) using the "Load File from URL" option. Samples 1-4 are the ambient pH treatment, and samples 5-8 are the low pH treatment.
-  - [Sample 1](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_1_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 2](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_2_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 3](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_3_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 4](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_4_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 5](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_5_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 6](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_6_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 7](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_7_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
-  - [Sample 8](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_8_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
+- Add one methylation data file using the "Load from File" option: [sample file](https://gannet.fish.washington.edu/spartina/project-gigas-oa-meth/output/bismark-roslin/zr3616_1_R1_val_1_val_1_val_1_bismark_bt2_pe.deduplicated.bedGraph.gz)
 
-<img width="568" alt="Screenshot 2023-11-24 at 11 40 36 AM" src="https://github.com/2023-environmental-bioinformatics/Lab_BLAST/assets/22335838/6000f871-7a36-4955-a590-a1b1612890ab">
+<img width="973" alt="Screenshot 2023-11-19 at 9 58 46 PM" src="https://github.com/yaaminiv/apalm-hypoxia-omics/assets/22335838/1c662716-7670-4841-b314-477659ec3366">
 
-- Familiarize yourself with the different ways to visualize the data, such as navigating to a different part of the genome, zooming in and out, changing the color of tracks, etc. Is the genome methylated throughout, or are there concentrated pockets that are more methylated? Are there any places that look like there are differences in methylation between pH treatments?
+- Familiarize yourself with the different ways to visualize the data, such as navigating to a different part of the genome, zooming in and out, changing the color of track, etc. Is the genome methylated throughout, or are there concentrated pockets that are more methylated?
 
 The R package [`methylKit`](https://github.com/al2na/methylKit) is commonly used to identify differentially methylated loci (DML). Users need to define a methylation difference. A 50% difference is commonly used to identify DML, but some studies have used other.
 
@@ -45,7 +37,7 @@ Now that you have a list of DML, the next step is to figure out where they are i
 
 - [Install BEDtools](https://bedtools.readthedocs.io/en/latest/content/installation.html)
   - For Mac OS users, I prefer using the `homebrew` installation method
-- Download the various Pacific oyster genome tracks.
+- Download the Pacific oyster gene track and one of the other tracks.
   - [Genes](http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_gene.gff)
   - [Upstream flanking regions](http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_upstream.gff) and [downstream flanking regions](http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_downstream.gff):
   - [Transposable elements](http://owl.fish.washington.edu/halfshell/genomic-databank/cgigas_uk_roslin_v1_rm.te.bed): These are elements of the genome that can move around to regulate other genes
